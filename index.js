@@ -43,7 +43,7 @@ bot.on('update', (update) => {
 
     const message = update.message
     const chat = update.message.chat.id
-    const user = { 
+    const user = {
         id: message.from.id,
         name: message.from.first_name
     }
@@ -66,7 +66,7 @@ bot.on('update', (update) => {
 const getPokemon = (pokemon, chat) => {
     if (!pokemon || !chat) return
 
-    Pokedex.getPokemonByName(pokemon)
+    Pokedex.getPokemonByName(pokemon.trim().toLowerCase())
         .then((p) => botPokemon(new Pokemon(p), chat))
         .catch((error) => {
             console.error(error)
